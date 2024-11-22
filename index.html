@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>여자친구 생일 축하 프로그램</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #ff79c6;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ff4fa0;
+        }
+        .message {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #ff79c6;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>여자친구 생일 축하 프로그램</h1>
+    
+    <label for="name">여자친구의 이름:</label><br>
+    <input type="text" id="name" placeholder="이름을 입력하세요" required><br>
+
+    <label for="birthday">생일 (YYYY-MM-DD):</label><br>
+    <input type="date" id="birthday" required><br>
+
+    <button onclick="checkBirthday()">생일 축하하기</button>
+
+    <p id="message" class="message"></p>
+
+    <script>
+        function checkBirthday() {
+            const name = document.getElementById('name').value;
+            const birthday = new Date(document.getElementById('birthday').value);
+            const today = new Date();
+
+            if (!name || !birthday) {
+                alert("이름과 생일을 모두 입력해주세요.");
+                return;
+            }
+
+            const birthdayMonth = birthday.getMonth();
+            const birthdayDay = birthday.getDate();
+            const todayMonth = today.getMonth();
+            const todayDay = today.getDate();
+
+            const messageElement = document.getElementById('message');
+
+            // 사용자가 입력한 생일이 11월 30일인 경우
+            if (birthdayMonth === 10 && birthdayDay === 30) {
+                messageElement.textContent = `생일 축하해요, ${name}! 🎉🎂💖`;
+            } else {
+                messageElement.textContent = `오늘은 ${name}의 생일이 아니에요. 하지만 미리 축하드려요! 🎉`;
+            }
+        }
+    </script>
+
+</body>
+</html>

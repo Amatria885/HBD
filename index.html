@@ -9,41 +9,61 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin-top: 50px;
+            background: linear-gradient(135deg, #ff79c6, #ff4fa0);
+            background-size: 200% 200%;
+            animation: gradient 3s ease infinite;
+            color: white;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         input, button {
-            padding: 10px;
+            padding: 12px;
             margin: 10px;
             font-size: 16px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
+            border-radius: 10px;
+            border: none;
         }
         button {
-            background-color: #ff79c6;
-            color: white;
+            background-color: #fdff74;
+            color: rgb(248, 91, 214);
             cursor: pointer;
+            transition: 0.3s;
         }
         button:hover {
-            background-color: #ff4fa0;
+            background-color: #ffdf50;
+            transform: scale(1.1);
         }
         .message {
-            font-size: 24px;
+            font-size: 30px;
             font-weight: bold;
-            margin-top: 20px;
-            color: #ff79c6;
+            margin-top: 30px;
+            color: #fff;
+            animation: messageAnimation 2s ease-in-out;
+        }
+        @keyframes messageAnimation {
+            0% { opacity: 0; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        .heart {
+            color: #ff4fa0;
+            font-size: 40px;
         }
     </style>
 </head>
 <body>
 
-    <h1>여자친구 생일 축하 프로그램</h1>
+    <h1>🎉 백선아 생일 축하 프로그램 🎉</h1>
     
-    <label for="name">여자친구의 이름:</label><br>
-    <input type="text" id="name" placeholder="이름을 입력하세요" required><br>
+    <label for="name">이름:</label><br>
+    <input type="text" id="name" placeholder="이름을 입력하세요." required><br>
 
     <label for="birthday">생일 (YYYY-MM-DD):</label><br>
     <input type="date" id="birthday" required><br>
 
-    <button onclick="checkBirthday()">생일 축하하기</button>
+    <button onclick="checkBirthday()">생일 축하하기 🎂</button>
 
     <p id="message" class="message"></p>
 
@@ -67,9 +87,9 @@
 
             // 사용자가 입력한 생일이 11월 30일인 경우
             if (birthdayMonth === 10 && birthdayDay === 30) {
-                messageElement.textContent = `생일 축하해요, ${name}! 🎉🎂💖`;
+                messageElement.innerHTML = `🎉 생일 축하해, ${name}야 ! 💖🎂🎀<br>사랑해 ${name}야 💕💕💕`;
             } else {
-                messageElement.textContent = `오늘은 ${name}의 생일이 아니에요. 하지만 미리 축하드려요! 🎉`;
+                messageElement.innerHTML = `오늘은 ${name}의 생일이 아니야. 🥺<br>하지만 미리 축하해! 🎉🎂💕💖`;
             }
         }
     </script>
